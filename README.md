@@ -21,16 +21,17 @@ https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_l
 #官方api类库
 ##第三方特殊的功能
 （其他功能见wechat.class.php)
-获取第三方平台access_token 
-获取预授权码  
-使用授权码换取公众号的授权信息 
-获取（刷新）授权公众号的令牌  
-获取授权方信息 
-获取授权方的选项设置信息    
-设置授权方的选项信息  
-推送component_verify_ticket协议 
-推送取消授权通知    
+*获取第三方平台access_token 
+*获取预授权码  
+*使用授权码换取公众号的授权信息 
+*获取（刷新）授权公众号的令牌  
+*获取授权方信息 
+*获取授权方的选项设置信息    
+*设置授权方的选项信息  
+*推送component_verify_ticket协议 
+*推送取消授权通知    
 ##初始化动作
+```php
 $options = array(
     'token' => '1smzsbkxxhfz0vZ88UGFGv7Kczo', //填写第三方的key
     'encodingaeskey' => 'WXdTheUxyPKOpI6zuhgCuIbCizpAG8OLRAgjunv', //填写第三方加密用的EncodingAESKey
@@ -39,19 +40,20 @@ $options = array(
     'authorizer_appid' => 'wx58aa023bda74',//根据需要初始化
     'component_verify_ticket' => ”eSBg9VPmFI43OvUHCv5ofzMGvNCG3F0LuQ84i“,//根据需要初始化
 );
+```
 ##被动接口方法
-getRevComponentVerifyTicket() 获取微信服务器发来的component_verify_ticket
-getUnauthAppid() 获取微信服务器发来的unauthorized_appid
+*getRevComponentVerifyTicket() 获取微信服务器发来的component_verify_ticket
+*getUnauthAppid() 获取微信服务器发来的unauthorized_appid
 ##主动接口方法
-checkComponentAuth()  获取第三方平台access_token 
-getPreAuthCode() 获取预授权码
-getAuthRefreshToken() 通过授权码auth_code获取authorizer_access_token
-getAuthAccessToken() 刷新authorizer_access_token
-getAuthAppInfo() 获取授权应用的信息
-getAuthAppOption() 获取授权应用的选项设置
-setAuthAppOption() 设置授权应用的选项
+*checkComponentAuth()  获取第三方平台access_token 
+*getPreAuthCode() 获取预授权码
+*getAuthRefreshToken() 通过授权码auth_code获取authorizer_access_token
+*getAuthAccessToken() 刷新authorizer_access_token
+*getAuthAppInfo() 获取授权应用的信息
+*getAuthAppOption() 获取授权应用的选项设置
+*setAuthAppOption() 设置授权应用的选项
 ##重写的4个方法
-__construct()
+*__construct()
     private $token;
     private $encodingAesKey;
     private $encrypt_type;
@@ -61,12 +63,13 @@ __construct()
     private $component_access_token;
     private $pre_auth_code;
     以上属性均是第三方平台的
-valid() appid换成了component_appid
-checkAuth() 替换获取access_token的方式
-reply() appid换成了component_appid
+*valid() appid换成了component_appid
+*checkAuth() 替换获取access_token的方式
+*reply() appid换成了component_appid
 ##剩下为从wechat.class.php原样复制函数
 
 #调用示例
+```php
 $options = array(
     'token' => '1smzsbkxxhfz0vZ88UGFGv7Kczo', //填写第三方的key
     'encodingaeskey' => 'WXdTheUxyPKOpI6zuhgCuIbCizpAG8OLRAgjunv', //填写第三方加密用的EncodingAESKey
@@ -97,3 +100,4 @@ switch ($type) {
         # code...
         break;
 }
+```
